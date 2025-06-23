@@ -1,186 +1,156 @@
+/* Base Styles */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to right, #f0f2f5, #ffffff);
-  color: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  transition: background 0.3s ease;
+  font-family: Arial, sans-serif;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 0 15px;
+  background: #ffffff;
+  color: #111111;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #121212;
-    color: #f0f0f0;
-  }
-  .container {
-    background: #1e1e1e;
-  }
-  .option-btn {
-    background: #333;
-    color: #f0f0f0;
-    border-color: #555;
-  }
-  .option-btn:hover {
-    background: #444;
-  }
-  #result {
-    background: #1a1a1a;
-    color: #fff;
-  }
-  .start-btn {
-    background: #333;
-    color: #fff;
-    border: 1px solid #555;
-  }
-  .start-btn:hover {
-    background: #444;
-  }
-}
-
-.container {
-  background: white;
-  padding: 30px;
-  max-width: 800px;
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease;
-}
-
+/* Headings */
 h1 {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 2rem;
+  color: #111111;
 }
 
-#start-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-#start-buttons button {
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  background-color: #28a745;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-#start-buttons button:hover {
-  background-color: #218838;
-}
-
+/* Question display */
 #question {
-  font-size: 1.3rem;
+  font-size: 1.2em;
   margin-bottom: 15px;
-  font-weight: 600;
 }
 
-#options button.option-btn {
+/* Option buttons */
+#options button {
   display: block;
   width: 100%;
-  padding: 14px 18px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background: #f9f9f9;
-  font-size: 1rem;
+  margin: 5px 0;
+  padding: 12px;
+  font-size: 1em;
+  border: 1px solid #cccccc;
+  background: #f0f0f0;
+  color: #111111;
   cursor: pointer;
+  border-radius: 5px;
   text-align: left;
-  transition: all 0.2s ease-in-out;
+  transition: background 0.3s ease, color 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.option-btn:hover {
-  background-color: #eef2f7;
+#options button:hover:not(:disabled) {
+  background: #d9eafc;
 }
 
-.option-btn.correct {
-  background-color: #d4edda;
-  border-color: #28a745;
-  color: #155724;
+#options button.correct {
+  background-color: #c8e6c9; /* light green */
+  border-color: #388e3c;
+  color: #111111;
+  cursor: default;
 }
 
-.option-btn.wrong {
-  background-color: #f8d7da;
-  border-color: #dc3545;
-  color: #721c24;
+#options button.wrong {
+  background-color: #ffcdd2; /* light red */
+  border-color: #d32f2f;
+  color: #111111;
+  cursor: default;
 }
 
-.option-btn.selected {
-  background-color: #e2e6ea;
-  border-color: #007bff;
-  color: #004085;
+#options button.selected {
+  border-color: #1976d2;
+  background-color: #bbdefb;
+  color: #111111;
 }
 
+/* Feedback */
 #feedback {
-  margin-top: 15px;
+  margin-top: 10px;
   font-weight: bold;
-  font-size: 1.1rem;
+  color: #111111;
 }
 
+/* Navigation buttons */
 #navigation {
   margin-top: 20px;
   text-align: center;
 }
 
 #navigation button {
-  margin: 0 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
+  padding: 10px 15px;
+  margin: 0 5px;
+  font-size: 1em;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #d0e2f2;
+  color: #111111;
+  border: 1px solid #a5c6e0;
   transition: background 0.3s ease;
 }
 
-#navigation button:hover {
-  background-color: #0056b3;
+#navigation button:hover:not(:disabled) {
+  background-color: #b0d4f0;
 }
 
+#navigation button:disabled {
+  background-color: #e0e0e0;
+  color: #777777;
+  cursor: default;
+}
+
+/* Result box */
+#result {
+  margin-top: 30px;
+  background: #fdfdfd;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+  color: #111111;
+}
+
+/* Start buttons */
+#start-buttons {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#start-buttons button {
+  padding: 12px 20px;
+  margin: 0 10px;
+  font-size: 1.1em;
+  border: 1px solid #a5c6e0;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #d0e2f2;
+  color: #111111;
+  transition: background 0.3s ease;
+}
+
+#start-buttons button:hover {
+  background-color: #b0d4f0;
+}
+
+/* Hide utility */
 .hidden {
   display: none;
 }
 
-#result {
-  margin-top: 30px;
-  padding: 20px;
-  background: #fefefe;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  line-height: 1.6;
+/* Ordered list spacing */
+ol li {
+  margin-bottom: 15px;
 }
 
-@media (max-width: 600px) {
-  .container {
-    padding: 20px;
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  body {
+    font-size: 1.1em;
+    padding: 10px;
   }
-  #navigation button {
-    width: 100%;
-    margin-top: 10px;
-  }
-  #question {
-    font-size: 1.1rem;
-  }
-  #options button.option-btn {
-    font-size: 0.95rem;
-  }
-  #start-buttons {
-    flex-direction: column;
-  }
+
+  #options button,
+  #navigation button,
   #start-buttons button {
-    width: 100%;
+    font-size: 1.05em;
+    padding: 14px;
   }
 }
+
