@@ -740,6 +740,7 @@ function shuffleArray(arr) {
 }
 
 function startTraining(partIndex = 0, preserveOrder = false) {
+  submitBtn.classList.add("hidden");
   mode = "training";
   currentQuestionIndex = 0;
 
@@ -785,6 +786,7 @@ function startTraining(partIndex = 0, preserveOrder = false) {
 }
 
 function startExam() {
+  submitBtn.classList.remove("hidden");
   mode = "exam";
   currentQuestionIndex = 0;
   userAnswers = [];
