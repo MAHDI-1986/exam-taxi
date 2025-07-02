@@ -1,4 +1,4 @@
-const questions = [
+const BASE_QUESTIONS = [
   {
     question: "Hva er intekter og kostender?",
     options: [
@@ -708,11 +708,18 @@ const questions = [
     correctAnswers: [0],
   },
 ];
+// ✅ Base Questions - Never Mutated
+
+// Globals
+// ✅ Base Questions - Never Mutated
+
+// ✅ Base Questions - Never Mutated
+
 let currentQuestionIndex = 0;
 let userAnswers = [];
 let mode = "training";
+let trainingQuestions = [];
 let examQuestions = [];
-let questionStats = new Map();
 
 const questionBox = document.getElementById("question");
 const optionsBox = document.getElementById("options");
@@ -721,33 +728,15 @@ const nextBtn = document.getElementById("next-btn");
 const prevBtn = document.getElementById("prev-btn");
 const submitBtn = document.getElementById("submit-btn");
 const resultBox = document.getElementById("result");
-
-document.getElementById("start-training-btn").onclick = () =>
-  startQuiz("training");
-document.getElementById("start-exam-btn").onclick = () => startQuiz("exam");
-nextBtn.onclick = nextQuestion;
-prevBtn.onclick = prevQuestion;
-submitBtn.onclick = submitExam;
-
-function startQuiz(selectedMode) {
-  mode = selectedMode;
-  currentQuestionIndex = 0;
-  userAnswers = Array(selectedMode === "exam" ? 35 : questions.length).fill(
-    null
-  );
-  examQuestions =
-    selectedMode === "exam"
-      ? shuffleArray(questions).slice(0, 35)
-      : questions.map((q) => ({ ...q }));
-  submitBtn.classList.toggle("hidden", selectedMode !== "exam");
-  nextBtn.classList.toggle("hidden", selectedMode === "exam");
-  prevBtn.classList.toggle("hidden", selectedMode === "exam");
-  resultBox.classList.add("hidden");
-  renderQuestion();
-}
+const passwordGate = document.getElementById("password-gate");
+const appContainer = document.getElementById("app-container");
+const passwordInput = document.getElementById("password-input");
+const loginBtn = document.getElementById("login-btn");
+const partSelector = document.getElementById("part-selector");
+const trainTypeSelector = document.getElementById("train-type-selector");
 
 function shuffleArray(arr) {
-  let copy = [...arr];
+  const copy = [...arr];
   for (let i = copy.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [copy[i], copy[j]] = [copy[j], copy[i]];
@@ -755,92 +744,127 @@ function shuffleArray(arr) {
   return copy;
 }
 
-function shuffleOptions(q) {
-  const optionsWithIndex = q.options.map((text, index) => ({ text, index }));
-  const shuffled = shuffleArray(optionsWithIndex);
-  const newOptions = shuffled.map((o) => o.text);
-  const correctIndex = shuffled.findIndex((o) =>
-    q.correctAnswers.includes(o.index)
-  );
-  return { options: newOptions, correctAnswers: [correctIndex] };
+function startTraining(partIndex = 0, preserveOrder = false) {
+  mode = "training";
+  currentQuestionIndex = 0;
+
+  const split = [14, 14, 14, 14, 14, 13];
+  const start = split.slice(0, partIndex).reduce((a, b) => a + b, 0);
+  const count = split[partIndex];
+
+  let block = BASE_QUESTIONS.slice(start, start + count).map((q) => ({
+    question: q.question,
+    options: [...q.options],
+    correctAnswers: [...q.correctAnswers],
+  }));
+
+  if (!preserveOrder) {
+    block = shuffleArray(block);
+  }
+
+  trainingQuestions = block.map((q) => ({
+    question: q.question,
+    options: preserveOrder ? q.options : shuffleArray([...q.options]),
+    correctAnswers: q.correctAnswers,
+  }));
+
+  userAnswers = Array(trainingQuestions.length).fill(null);
+  resultBox.classList.add("hidden");
+  submitBtn.classList.add("hidden");
+  nextBtn.classList.remove("hidden");
+  prevBtn.classList.remove("hidden");
+  feedbackBox.textContent = "";
+  renderQuestion();
+}
+
+function startExam() {
+  mode = "exam";
+  currentQuestionIndex = 0;
+  userAnswers = [];
+  examQuestions = shuffleArray(BASE_QUESTIONS)
+    .slice(0, 35)
+    .map((q) => {
+      const shuffledIndices = q.options.map((_, i) => i);
+      shuffleArray(shuffledIndices);
+      return {
+        question: q.question,
+        options: shuffledIndices.map((i) => q.options[i]),
+        correctAnswers: q.correctAnswers.map((i) => shuffledIndices.indexOf(i)),
+      };
+    });
+  resultBox.classList.add("hidden");
+  submitBtn.classList.remove("hidden");
+  nextBtn.classList.add("hidden");
+  prevBtn.classList.add("hidden");
+  feedbackBox.textContent = "";
+  renderQuestion();
 }
 
 function renderQuestion() {
-  const progress = document.createElement("div");
-  progress.style.marginBottom = "10px";
-  progress.style.fontWeight = "bold";
-  progress.textContent = `Question ${currentQuestionIndex + 1} of ${
-    examQuestions.length
-  }`;
-  questionBox.innerHTML = "";
-  questionBox.appendChild(progress);
-  let originalQ = examQuestions[currentQuestionIndex];
-  const shuffled = shuffleOptions(originalQ);
-  let q = {
-    ...originalQ,
-    options: shuffled.options,
-    correctAnswers: shuffled.correctAnswers,
-  };
-  examQuestions[currentQuestionIndex] = q;
-
-  questionBox.textContent = `${currentQuestionIndex + 1}. ${q.question}`;
-  optionsBox.innerHTML = "";
   feedbackBox.textContent = "";
-
-  q.options.forEach((opt, idx) => {
+  const qList = mode === "training" ? trainingQuestions : examQuestions;
+  const qData = qList[currentQuestionIndex];
+  const options = qData.options;
+  const correctAnswers = qData.correctAnswers;
+  questionBox.textContent = `${currentQuestionIndex + 1}. ${qData.question}`;
+  optionsBox.innerHTML = "";
+  options.forEach((option, index) => {
     const btn = document.createElement("button");
-    btn.textContent = opt;
+    btn.textContent = option;
     btn.classList.add("option-btn");
-    btn.onclick = () => handleOptionClick(idx);
-
+    btn.onclick = () => handleOptionClick(index);
+    if (mode === "training" && userAnswers[currentQuestionIndex] !== null) {
+      if (index === userAnswers[currentQuestionIndex]) {
+        btn.classList.add(correctAnswers.includes(index) ? "correct" : "wrong");
+      }
+    }
     if (mode === "exam" && userAnswers[currentQuestionIndex] !== null) {
-      if (idx === userAnswers[currentQuestionIndex]) {
+      if (index === userAnswers[currentQuestionIndex]) {
         btn.classList.add("selected");
       }
     }
-
     optionsBox.appendChild(btn);
   });
-
-  prevBtn.style.display = currentQuestionIndex > 0 ? "inline-block" : "none";
+  const lastIndex = qList.length - 1;
+  prevBtn.style.display = currentQuestionIndex === 0 ? "none" : "inline-block";
   nextBtn.style.display =
-    currentQuestionIndex < examQuestions.length - 1 ? "inline-block" : "none";
+    currentQuestionIndex === lastIndex ? "none" : "inline-block";
 }
 
-function handleOptionClick(index) {
-  const q = examQuestions[currentQuestionIndex];
-  userAnswers[currentQuestionIndex] = index;
-
-  const qKey = q.question;
-  const currentStat = questionStats.get(qKey) || { correct: 0, wrong: 0 };
-  if (mode === "exam") {
-    const isCorrect = q.correctAnswers.includes(index);
-    if (isCorrect) currentStat.correct++;
-    else currentStat.wrong++;
-    questionStats.set(qKey, currentStat);
-  }
-
+function handleOptionClick(selectedIndex) {
+  const qList = mode === "training" ? trainingQuestions : examQuestions;
+  const qData = qList[currentQuestionIndex];
+  const options = qData.options;
+  const correctAnswers = qData.correctAnswers;
+  userAnswers[currentQuestionIndex] = selectedIndex;
   if (mode === "training") {
+    if (correctAnswers.includes(selectedIndex)) {
+      feedbackBox.textContent = "Correct!";
+      feedbackBox.style.color = "green";
+    } else {
+      const correctOpts = correctAnswers.map((i) => options[i]).join(", ");
+      feedbackBox.textContent = `Wrong! Correct answer: ${correctOpts}`;
+      feedbackBox.style.color = "red";
+    }
     Array.from(optionsBox.children).forEach((btn, idx) => {
       btn.disabled = true;
-      if (q.correctAnswers.includes(idx)) btn.classList.add("correct");
-      else if (idx === index) btn.classList.add("wrong");
+      if (correctAnswers.includes(idx)) btn.classList.add("correct");
+      if (idx === selectedIndex && !correctAnswers.includes(idx))
+        btn.classList.add("wrong");
     });
-    feedbackBox.textContent = q.correctAnswers.includes(index)
-      ? "Correct!"
-      : "Wrong!";
-    feedbackBox.style.color = q.correctAnswers.includes(index)
-      ? "green"
-      : "red";
   } else {
-    renderQuestion();
+    Array.from(optionsBox.children).forEach((btn, idx) => {
+      btn.classList.toggle("selected", idx === selectedIndex);
+    });
   }
 }
 
 function nextQuestion() {
-  if (currentQuestionIndex < examQuestions.length - 1) {
+  const qList = mode === "training" ? trainingQuestions : examQuestions;
+  if (currentQuestionIndex < qList.length - 1) {
     currentQuestionIndex++;
     renderQuestion();
+    feedbackBox.textContent = "";
   }
 }
 
@@ -848,43 +872,94 @@ function prevQuestion() {
   if (currentQuestionIndex > 0) {
     currentQuestionIndex--;
     renderQuestion();
+    feedbackBox.textContent = "";
   }
 }
 
 function submitExam() {
-  if (userAnswers.includes(null)) {
+  if (userAnswers.length < examQuestions.length || userAnswers.includes(null)) {
     alert("Please answer all questions before submitting.");
     return;
   }
-
-  let score = 0;
-  let output = examQuestions.map((q, i) => {
-    const isCorrect = q.correctAnswers.includes(userAnswers[i]);
-    if (isCorrect) score++;
-    return `
-        <li><b>${q.question}</b><br>
-        Your answer: <span style="color:${isCorrect ? "green" : "red"}">${
-      q.options[userAnswers[i]]
-    }</span><br>
-        Correct: <b>${q.options[q.correctAnswers[0]]}</b></li>
-      `;
+  let correctCount = 0;
+  let detailedResults = [];
+  examQuestions.forEach((q, idx) => {
+    const userAns = userAnswers[idx];
+    const isCorrect = q.correctAnswers.includes(userAns);
+    if (isCorrect) correctCount++;
+    const correctOpts = q.correctAnswers.map((i) => q.options[i]).join(", ");
+    detailedResults.push({
+      question: q.question,
+      userAnswer: q.options[userAns],
+      correctAnswer: correctOpts,
+      isCorrect,
+    });
   });
-  resultBox.innerHTML = `<h3>Score: ${score}/${
-    examQuestions.length
-  }</h3><ol>${output.join("")}</ol>`;
-  let statsOutput = Array.from(questionStats.entries()).map(
-    ([question, stat]) => {
-      return `<li><b>${question}</b><br>Correct: ${stat.correct}, Wrong: ${stat.wrong}</li>`;
-    }
-  );
-  resultBox.innerHTML += `<h3>Answer Summary</h3><ul>${statsOutput.join(
-    ""
-  )}</ul>`;
+  const passMark = Math.ceil(examQuestions.length * 0.85);
+  const pass = correctCount >= passMark;
+  const passMsg = pass
+    ? "🎉 Congratulations! You passed the exam."
+    : "❌ Sorry, you failed the exam.";
+  resultBox.innerHTML = `
+      <h2>Result</h2>
+      <p>Score: ${correctCount} / ${examQuestions.length}</p>
+      <p>${passMsg}</p>
+      <hr/>
+      <h3>Review</h3>
+      <ol>
+        ${detailedResults
+          .map(
+            (res) => `
+          <li>
+            <b>${res.question}</b><br/>
+            Your answer: <span style="color:${
+              res.isCorrect ? "green" : "red"
+            }">${res.userAnswer || "No answer"}</span><br/>
+            Correct answer: <b>${res.correctAnswer}</b>
+          </li>`
+          )
+          .join("")}
+      </ol>`;
   resultBox.classList.remove("hidden");
   questionBox.textContent = "";
   optionsBox.innerHTML = "";
   feedbackBox.textContent = "";
-  nextBtn.classList.add("hidden");
-  prevBtn.classList.add("hidden");
-  submitBtn.classList.add("hidden");
+  nextBtn.style.display = "none";
+  prevBtn.style.display = "none";
+  submitBtn.style.display = "none";
 }
+
+nextBtn.addEventListener("click", nextQuestion);
+prevBtn.addEventListener("click", prevQuestion);
+submitBtn.addEventListener("click", submitExam);
+
+trainTypeSelector.addEventListener("change", () => {
+  const part = parseInt(partSelector.value);
+  const type = trainTypeSelector.value;
+  if (!isNaN(part)) {
+    startTraining(part, type === "1");
+  }
+});
+document.getElementById("start-exam-btn").addEventListener("click", startExam);
+
+partSelector.addEventListener("change", () => {
+  const part = parseInt(partSelector.value);
+  const type = trainTypeSelector.value;
+  if (!isNaN(part)) {
+    startTraining(part, type === "1");
+  }
+});
+
+loginBtn.addEventListener("click", () => {
+  const password = passwordInput.value.trim();
+  if (password === "admin123") {
+    passwordGate.style.display = "none";
+    appContainer.style.display = "block";
+
+    const part = parseInt(partSelector.value);
+    const type = trainTypeSelector.value;
+    startTraining(part, type === "1");
+  } else {
+    alert("Wrong password");
+  }
+});
