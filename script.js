@@ -803,8 +803,7 @@ function startExam() {
     });
   resultBox.classList.add("hidden");
   submitBtn.classList.remove("hidden");
-  nextBtn.classList.add("hidden");
-  prevBtn.classList.add("hidden");
+  // Removed hiding of navigation buttons in exam mode to ensure visibility on mobile
   feedbackBox.textContent = "";
   renderQuestion();
 }
@@ -978,4 +977,3 @@ loginBtn.addEventListener("click", () => {
     alert("Wrong password");
   }
 });
-
