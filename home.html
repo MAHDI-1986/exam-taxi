@@ -2,19 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Taxi License Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Taxi License Test App</title>
     <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
   </head>
   <body>
-    <div class="container">
-      <h1>Taxi License Training & Exam</h1>
+    <!-- 🔐 Password Gate -->
+    <div id="password-gate">
+      <h2>Please enter password to continue</h2>
+      <input type="password" id="password-input" placeholder="Enter password" />
+      <button id="login-btn">Login</button>
+    </div>
+
+    <!-- ✅ Main App Container -->
+    <div id="app-container" style="display: none">
+      <h1>Training & Exam Quiz</h1>
+
+      <!-- 🎛️ Training Options -->
       <div id="start-buttons">
-        <button id="start-training-btn">Start Training</button>
+        <label for="train-type-selector">Training Type:</label>
+        <select id="train-type-selector">
+          <option value="1">Train 1 (Fixed Order)</option>
+          <option value="2">Train 2 (Shuffled Order)</option>
+        </select>
+
+        <label for="part-selector">Part:</label>
+        <select id="part-selector">
+          <option value="0">Part 1</option>
+          <option value="1">Part 2</option>
+          <option value="2">Part 3</option>
+          <option value="3">Part 4</option>
+          <option value="4">Part 5</option>
+          <option value="5">Part 6</option>
+        </select>
+
         <button id="start-exam-btn">Start Exam</button>
       </div>
 
+      <!-- ❓ Quiz Section -->
       <div id="quiz-container">
         <div id="question"></div>
         <div id="options"></div>
@@ -27,7 +52,10 @@
         </div>
       </div>
 
+      <!-- 📝 Results -->
       <div id="result" class="hidden"></div>
     </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
