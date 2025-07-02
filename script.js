@@ -810,6 +810,12 @@ function startExam() {
 }
 
 function renderQuestion() {
+  // Ensure submit button is only visible in exam mode
+  if (mode === "exam") {
+    submitBtn.classList.remove("hidden");
+  } else {
+    submitBtn.classList.add("hidden");
+  }
   feedbackBox.textContent = "";
   const qList = mode === "training" ? trainingQuestions : examQuestions;
   const qData = qList[currentQuestionIndex];
@@ -972,3 +978,4 @@ loginBtn.addEventListener("click", () => {
     alert("Wrong password");
   }
 });
+
