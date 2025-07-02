@@ -710,11 +710,6 @@ const BASE_QUESTIONS = [
 ];
 // ✅ Base Questions - Never Mutated
 
-// Globals
-// ✅ Base Questions - Never Mutated
-
-// ✅ Base Questions - Never Mutated
-
 let currentQuestionIndex = 0;
 let userAnswers = [];
 let mode = "training";
@@ -762,11 +757,23 @@ function startTraining(partIndex = 0, preserveOrder = false) {
     block = shuffleArray(block);
   }
 
-  trainingQuestions = block.map((q) => ({
-    question: q.question,
-    options: preserveOrder ? q.options : shuffleArray([...q.options]),
-    correctAnswers: q.correctAnswers,
-  }));
+  trainingQuestions = block.map((q) => {
+    if (preserveOrder) {
+      return {
+        question: q.question,
+        options: q.options,
+        correctAnswers: q.correctAnswers,
+      };
+    } else {
+      const shuffledIndices = q.options.map((_, i) => i);
+      shuffleArray(shuffledIndices);
+      return {
+        question: q.question,
+        options: shuffledIndices.map((i) => q.options[i]),
+        correctAnswers: q.correctAnswers.map((i) => shuffledIndices.indexOf(i)),
+      };
+    }
+  });
 
   userAnswers = Array(trainingQuestions.length).fill(null);
   resultBox.classList.add("hidden");
