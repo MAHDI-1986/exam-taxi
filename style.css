@@ -160,10 +160,5 @@ h1 {
 #start-buttons button:hover {
   background-color: #145ea8;
 }
-.hidden {
-  display: none !important;
-}
-#next-btn {
-  display: inline-block !important;
-}
+
 
