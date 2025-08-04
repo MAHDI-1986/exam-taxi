@@ -800,9 +800,61 @@ const BASE_QUESTIONS = [
       "5 000 pr år",
       "7 000 pr år",
       "9 000 pr år",
-      
+      "90 Hva er riktig om arbeidstid og fritid?",
+      "Den alminnelige arbeidstiden må ikke overstige 7,5 timer i løpe av 24 time og må ikke over 37,5 timer i løpet av 5 dager",
+      "Den alminnelige fritiden må være minst 9 timer i løpe av 24 timer, og minst 45 timer sammenhengende hvile løpet av 5 dager",
+      "Den alminnelige arbeidstiden må ikke overstige 9 timer i løpe av 24 time, og må ikke over 40 timer i løpet av 7 dager",
+      "Den alminnelige fritiden må være minst 15 timer i løpe av 24 timer, og minst 50 timer sammenhengende hvile løpet av 7",
     ],
-    correctAnswers: [0],
+    correctAnswers: [0, 7],
+  },
+  {
+    question:
+      "Hvor mange løyvehaver rett til å benytte motorvogn registrert for en drosje?",
+    options: ["17 personer", "12 personer", "5 personer", "9 personer"],
+    correctAnswers: [3],
+  },
+  {
+    question:
+      "Du skal ansette en sjåfør i en hel fast stilling. Hva skal blant annet være med i den skriftlige arbeidsavtalen?",
+    options: [
+      "Planlegging av pauser og hvor disse skal tas",
+      "Tidspunktet for arbeidsforholdets begynnelse og slutt",
+      "De faglige krav som gjelder for stillingen",
+      "Lengden av den avtalte daglige og ukentlige arbeidstid",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question:
+      "Hva er riktig om kravene til «tilfredsstillende økonomisk evne» ved tildeling av drosjeløyve?",
+    options: [
+      "Det skal innbetales en garantisum til løyvemyndigheten",
+      "Det må opplyses om to private kausjonister som garantister",
+      "Det må fremlegges en garantierklæring fra bank eller forsikringsselskap til løyvemyndigheten",
+      "Det skal framlegges dokumentasjon på at kjøretøyet er betalt",
+    ],
+    correctAnswers: [2],
+  },
+  {
+    question: "Hva er riktig om skatt?",
+    options: [
+      "Eiendomsskatt legges for drosjer kjøpt og eid av virksomheten",
+      "Formueskatt er frivillig, og betales etter evne og vilje",
+      "Inntektsskatt er en direkte skatt på inntekt og formue for enkeltpersoner",
+      "Personskatt skal beregnes av innbetaling til yrkesskadeforsikringen",
+    ],
+    correctAnswers: [2],
+  },
+  {
+    question: "Hva er riktig om arbeidstid og fritid?",
+    options: [
+      "Den alminnelige arbeidstiden må ikke overstige 7,5 timer i løpe av 24 time og må ikke over 37,5 timer i løpet av 5 dager",
+      "Den alminnelige fritiden må være minst 9 timer i løpe av 24 timer, og minst 45 timer sammenhengende hvile løpet av 5 dager",
+      "Den alminnelige arbeidstiden må ikke overstige 9 timer i løpe av 24 time, og må ikke over 40 timer i løpet av 7 dager",
+      "Den alminnelige fritiden må være minst 15 timer i løpe av 24 timer, og minst 50 timer sammenhengende hvile løpet av 7",
+    ],
+    correctAnswers: [2],
   },
 ];
 // ✅ Base Questions - Never Mutated
@@ -841,7 +893,7 @@ function startTraining(partIndex = 0, preserveOrder = false) {
   mode = "training";
   currentQuestionIndex = 0;
 
-  const split = [14, 14, 14, 14, 14, 13];
+  const split = [15, 15, 15, 15, 15, 15];
   const start = split.slice(0, partIndex).reduce((a, b) => a + b, 0);
   const count = split[partIndex];
 
@@ -1074,4 +1126,3 @@ loginBtn.addEventListener("click", () => {
     alert("Wrong password");
   }
 });
-
