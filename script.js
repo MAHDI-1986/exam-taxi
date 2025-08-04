@@ -1,711 +1,812 @@
 const BASE_QUESTIONS = [
   {
-    question: "Hva er intekter og kostender?",
+    question:
+      "En av dine ansatte rapporterer at en passasjer har glemt håndbagasje i drosjen. Hvem har ansvaret for den gjenglemte håndbagasjen?",
     options: [
-      "foretakregister",
-      "Intekter= du tjener inn",
-      "25 virkedager eller 5 uke",
+      "Drosjepassasjeren",
+      "Drosjeforsikring",
+      "Drosjesjåføren",
+      "Drosjeeieren",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva er en moral?",
+    options: [
+      "Det er når du gir moralsk hjelp til de ansatte",
+      "Det er rett og galt",
+      "Det er personlig veiledning",
+    ],
+    correctAnswers: [1],
+  },
+  {
+    question: "Hvor mange dager er lovlig å ta ferie?",
+    options: ["25 dager", "30 dager", "20 dager", "15 dager"],
+    correctAnswers: [0],
+  },
+  {
+    question:
+      "Hvilke tilleggsinnretninger skal være tilkoblet taksameteret under bruk?",
+    options: ["Mobiltelefon", "Anlegg", "Tachograf", "Takskilt"],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hvem er ansvarlig for bruken av taksameter?",
+    options: [
+      "Justisvesenet, dersom takstene blir uforholdsmessig høye",
+      "Sjåføren, dersom løyvehaveren er en annen enn den som kjører bilen",
+      "Påtalemyndighetenes, dersom det avdekkes feil eller mangler ved den daglige kontrollen",
+      "Løyvehaveren, dersom ingen særlig grunn taler for at sjåfør anses som bruker",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question: "Når er det tillatt å ta i bruk et taksameter i kjøretøyet?",
+    options: [
+      "Når tollvesenet har kontrollert og godkjent installasjonen, samt aktuelle tilleggsinnretninger",
+      "Når Justervesenet har kontrollert og godkjent installasjonen, samt aktuelle tilleggsinnretninger",
+      "Når Konkurransetilsynet har kontrollert og godkjent installasjonen",
+      "Når Statens vegvesen har godkjent installasjonen og nødvendige tilleggsinnretninger",
     ],
     correctAnswers: [1],
   },
   {
     question:
-      "Når du skal avslutte ett selskap,hvor lange skal du oppbevare dokumentene dine?",
+      "I hvilket tilfelle skal du melde ifra til Justervesenet før et taksameter kan tas i bruk?",
     options: [
-      "regner ut i fra tidligere bruttotall.",
-      "du setter det inn i skattetrekkskonto, først",
-      "5 år",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "Hva vil det si at et seleskapet er insolvent?",
-    options: [
-      "Du klare ikke å betale ulike krav ved forfall og du ha rmye gjeld på deg.",
-      "du kan ikke gi oppsigelse på grunn av sykdum.",
-      "Den tiden er lønsomt før du skifter den ut.",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question: "Du åpner et aksjeselskap,hvor skal du registere det?",
-    options: [
-      "aksjerinnskudd.",
-      "Når bilen er ikke økonomisk, kjøpe el bil.",
-      "Foretaksregisteret",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question:
-      "Hvor mye er du ansvarlig for dersom et aksjeselskap går konkurs?",
-    options: [
-      "Den tiden er lønsomt før du skifter den ut.",
-      "det du har sett inn er det du taper ved konkurs.",
-      "send inn en annen bil med nok plasser.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Hva menes med resultat budsjett?",
-    options: [
-      "Når bilen er ikke økonomisk, kjøpe el bil.",
-      "betyr hvor får du penger fra",
-      "Setter sammen-inntakter og kostnad i overskudd eller underskudd.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "hva menes med god og dårlig likviditet?",
-    options: [
-      "Alt av dine inntakter og utgjefter skal skrive i regnskapet.",
-      "god likviditet = klar å betale",
-      "1- egenfinansering ( du sette dine egen penger inn for å kjope noe)",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "kassekreditt er ett låneform. Hva mens med det?",
-    options: [
-      "ved stor forskjell i dekk, dimenstasjon må du kontrollen taksemeter",
-      "Skatten du betaler på forhånd",
-      "et bevilket beløp med en kasseramme ( maks Belop) .",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "Hva er avskrivning ?",
-    options: [
-      "aksjerinnskudd.",
-      "1- egenfinansering ( du sette dine egen penger inn for å kjope noe)",
-      "fradragsfører verdigfallet til en eiendel.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "Hvilke typer finansiering er det?",
-    options: [
-      "fast stilling fra deg.",
-      "Yrkesskadeerstatning. yrkesskade forsikring.",
-      "1- egenfinansering ( du sette dine egen penger inn for å kjope noe)",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "fremmed finanisering( du tar opp lån)",
-    options: [
-      "3-selv finanisering( overskudd tilfirma)",
-      "hvis dere har sykepengerforsikring får du først sykedag,hvis ikke så får du etter 16 dager.",
-      "8 passasjen.Max. 9 passasjer med sjofør",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question: "hva vil de si at dere er bokføringspliktige?",
-    options: [
-      "fremtidlig samlene utgifter.",
-      "ikke slutte dato",
-      "Alt av dine inntakter og utgjefter skal skrive i regnskapet.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "Hva er en kalkulert kostand ?",
-    options: [
-      "fremtidlig samlene utgifter.",
-      "utgånde mva minus inngånde mva.",
-      "ansatt ferie og hvor mange dager?",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question:
-      "Ansatten din har jobbet i tre år som en midlertidlig ansatt. Hva kan han kreve fra deg?",
-    options: [
-      "det du har sett inn er det du taper ved konkurs.",
-      "18000kr",
-      "fast stilling fra deg.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "I hvilken periode må du etter loven gi",
-    options: [
-      "ansatt ferie og hvor mange dager?",
-      "du kan ikke gi oppsigelse på grunn av sykdum.",
-      "et aksjereselskapet?",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question:
-      "Hvis ansetten din jobber mer enn 8 timer, hvor mye pause har han krav på?",
-    options: [
-      "minste 30 minutter.",
-      "3-selv finanisering( overskudd tilfirma)",
-      "ansatt ferie og hvor mange dager?",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question: "Når har ansatt din krav på pause?",
-    options: [
-      "legge inn penger i noe i hope om et du tjenet på det. legge penger i investeringsfond, børs.",
-      "Etter 5 timer og 30 minutter har ansatt krav på pause.",
-      "deltakra har sin egen ansvarsandel. Da står for delt ansver alle eier har sin egen ansverdel",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "hva skjer hvis du ikke betale skyldig merverdiavgjft?",
-    options: [
-      "kan krave tvangsording kort tid etter forfall.",
-      "deltakra har sin egen ansvarsandel. Da står for delt ansver alle eier har sin egen ansverdel",
-      "aksjerinnskudd.",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question:
-      "Hvorden regner mann merverdiavgift( MVA)? Altså hva bestemmer om du får penger eller å betale ?",
-    options: [
-      "synlig.",
-      "Når bilen er ikke økonomisk, kjøpe el bil.",
-      "utgånde mva minus inngånde mva.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "hva er egenmelding?",
-    options: [
-      "god likviditet = klar å betale",
-      "ikke slutte dato",
-      "si ifra til arbeidsgiver ved korttidsykdom.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question:
-      "En ansatt har jobbet i samme virksomhet i 5år . hvor lenge er oppsigelsetiden?",
-    options: [
-      "hvor deltakerne har ubegrenset ansvar.",
-      "du låner bil en begrense periode.",
-      "2 månder.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "En ansatt blir sykfra.når du begynne å gi han sykepenger?",
-    options: [
-      "fradragsfører verdigfallet til en eiendel.",
-      "fra første sykdag.",
-      "2 månder.",
+      "Dersom taksameteret slutter å varsle om pålagte pauser",
+      "Ved endring av dekkdimensjon som påvirker måleresultatet i vesentlig grad",
+      "Ved vesentlig endring av kjøretøyets avgiftsklasse",
+      "Dersom endring i konsumprisindeksen reduserer inntektsgrunnlaget",
     ],
     correctAnswers: [1],
   },
   {
     question:
-      "har selvestendig næringdrivende krav på sykepenger?Eventuelt fra når?",
+      "Hva er riktig reaksjon dersom det kommer fram at en av dine sjåfører har stoppet taksameteret under et oppdrag?",
     options: [
-      "hvis dere har sykepengerforsikring får du først sykedag,hvis ikke så får du etter 16 dager.",
-      "fradragsfører verdigfallet til en eiendel.",
-      "kontinuerlig (jevnlig)",
+      "Dersom sjåføren bærer all risiko alene, er dette akseptert",
+      "Dersom nettoinntekten blir høyere uten takst, er det akseptabelt",
+      "Sjåføren kan beholde et eventuelt overskudd",
+      "Sjåføren må bli forklart at dette er bedrageri",
     ],
-    correctAnswers: [0],
+    correctAnswers: [3],
   },
   {
-    question: "hva dekker yrkesrskade til en ansett?",
-    options: [
-      "50 000 kr hver år, 20 %.",
-      "Yrkesskadeerstatning. yrkesskade forsikring.",
-      "bedrift betale avgift basert på lønn til ansett.( oslo 14,1%)",
-    ],
+    question:
+      "Hvilken nettadresse må du bruke ved registrering av et drosjefirma?",
+    options: ["www.nav.no", "www.altinn.no", "www.lovdata.no", "www.spk.no"],
     correctAnswers: [1],
   },
   {
-    question: "Hva er den alminnelige arbeidstiden?",
+    question: "Hva er riktig med hensyn til sykepenger for ansatte?",
     options: [
-      "synlig.",
-      "den må ikke overtide, 9 timer på 24 timer,",
-      "et bevilket beløp med en kasseramme ( maks Belop) .",
+      "Det offentlige dekker sykepenger fra første sykedag",
+      "Arbeidsgiver skal dekke alle sykepenger for deltidsansatte",
+      "Arbeidsgiver dekker sykepenger fra andre sykedag",
+      "Arbeidsgiver må dekke inntil 16 virkedager",
     ],
-    correctAnswers: [1],
+    correctAnswers: [3],
   },
   {
-    question: "Hva menes med den økonomiske levealderen til en bil?",
+    question: "Hvilke poster skal inngå i beregning av feriepenger?",
     options: [
-      "ansatt ferie og hvor mange dager?",
-      "Den tiden er lønsomt før du skifter den ut.",
-      "2 eller flere eier med ubegrenset ansver.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Når kan du ta tilleggsbetalt for drosje turen?",
-    options: [
-      "du setter det inn i skattetrekkskonto, først",
-      "Ansatt,arbeidtaker",
-      "rullestol, forhåndsbestilling, oppkast",
+      "Utbetalt kilometergodtgjørelse",
+      "Utbetalt vederlag som vikar i en begrenset tidsperiode",
+      "Utbetalt feriepenger",
+      "Utbetalt utlegg for bompenger",
     ],
     correctAnswers: [2],
   },
   {
-    question: "Hvilke forskrift må du forevise til passasjernene dine?",
+    question: "Hvilket ansvar har arbeidsgiver om din ansatte ønsker ferie?",
     options: [
-      "god likviditet = klar å betale",
-      "takberegning.",
-      "kontinuerlig (jevnlig)",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Hvorden blir drosje turen registeret?",
-    options: [
-      "GNSS,60 dager.",
-      "et bevilket beløp med en kasseramme ( maks Belop) .",
-      "kontinuerlig (jevnlig)",
+      "Arbeidsgiver plikter å sørge for at arbeidstakeren som krever det, avvikler lønnsom ferietid i tidsrommet 1. juni til 30. september",
+      "Arbeidsgiver som har sagt opp arbeidstaker, har ansvar for at all ferie tas i oppsigelsestiden",
+      "Arbeidsgiver kan pålegge arbeidstakeren med tariffavtale å ta kortere ferie enn de som ikke er organiserte",
+      "Arbeidsgiver har ansvar for at arbeidstaker avvikler høst- og vinterferie samtidig med skoleferien",
     ],
     correctAnswers: [0],
   },
   {
-    question: "hva er forskuddstrekk og hvor settes de inn?",
+    question: "Når gjelder en gjensidig oppsigelsestid på 2 måneder?",
     options: [
-      "bedrift betale avgift basert på lønn til ansett.( oslo 14,1%)",
-      "du setter det inn i skattetrekkskonto, først",
-      "hvis han har truet passasjer.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "hva er en arbeidsplan?",
-    options: [
-      "Etter 5 timer og 30 minutter har ansatt krav på pause.",
-      "arbeidesgiver og arbeidetaker lager en skriftlig plan over når den ansett skal jobbe.",
-      "aksjerinnskudd.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question:
-      "En ansatt har vært sykmeldt i seks måneder -kan du gi han oppsigelse?",
-    options: [
-      "ved stor forskjell i dekk, dimenstasjon må du kontrollen taksemeter",
-      "du kan ikke gi oppsigelse på grunn av sykdum.",
-      "50 000 kr hver år, 20 %.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question:
-      "Du skal gi oppsigelse til en ansatt- hvor skal du gi han oppsigelse?",
-    options: [
-      "Setter sammen-inntakter og kostnad i overskudd eller underskudd.",
-      "det skal være personlig eller sendes brev, epost.",
-      "GNSS,60 dager.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question:
-      "Hvilken lov er det som sikrerfor at arbeidet er trygg og blir gjort i sikkerhet?",
-    options: [
-      "ansatt ferie og hvor mange dager?",
-      "arbeidsmiljølover",
-      "legge inn penger i noe i hope om et du tjenet på det. legge penger i investeringsfond, børs.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Hva menes med at du må ha økonomisk evne?",
-    options: [
-      "Setter sammen-inntakter og kostnad i overskudd eller underskudd.",
-      "garantierklæring fra bank eller forsikring.",
-      "bedrift betale avgift basert på lønn til ansett.( oslo 14,1%)",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Du har et drosjefirma, hvor registerer du løyve ?",
-    options: ["Altin", "fremtidlig samlene utgifter.", "et aksjereselskapet?"],
-    correctAnswers: [0],
-  },
-  {
-    question: "Du har drosjeløyve- hva er høyest antall passasjerer kan ha?",
-    options: [
-      "legge inn penger i noe i hope om et du tjenet på det. legge penger i investeringsfond, børs.",
-      "3-selv finanisering( overskudd tilfirma)",
-      "8 passasjen.Max. 9 passasjer med sjofør",
+      "Dersom arbeidstakeren har vært ansatt i mer enn 1 år sammenhengende i samme virksomhet",
+      "Dersom arbeidstakeren har vært ansatt i mer enn 2 år sammenhengende i samme virksomhet",
+      "Dersom arbeidstakeren har vært ansatt i mer enn 5 år sammenhengende i samme virksomhet",
+      "Dersom arbeidstakeren har vært ansatt i mer enn 10 år sammenhengende i samme virksomhet",
     ],
     correctAnswers: [2],
   },
   {
-    question: "Hvilken krav er det for å få kjøresddel?",
+    question: "Hva er riktig om oppsigelse av en ansatt sjåfør?",
     options: [
-      "Etter 5 timer og 30 minutter har ansatt krav på pause.",
-      "politiatest-faglig kompetanse 2år- minste 20 år gammel- førerkort- lege test",
-      "send inn en annen bil med nok plasser.",
+      "Oppsigelsen skal inneholde opplysninger om arbeidstakerens lønns- og arbeidsforhold",
+      "Oppsigelsen skal sendes enten per brev, eller som e-post til arbeidstakerens e-postadresse",
+      "Oppsigelsen skal inneholde opplysninger om arbeidssted og arbeidstid",
+      "Oppsigelsen skal sendes til arbeidstakeren personlig og rekommandert til arbeidstakerens adresse",
     ],
-    correctAnswers: [1],
+    correctAnswers: [3],
   },
   {
-    question: "hva er riktig om når enerett kan tildeles?",
+    question: "Eneretter for drosje kan bare tildeles i kommuner som har–",
     options: [
-      "8 passasjen.Max. 9 passasjer med sjofør",
-      "et aksjereselskapet?",
-      "under 20000 innbyggere- 80 km byfolkning - tildeles ved konkuranse- maks 5 år- fylkskomune tildels enerett",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "Hvilken krav trenger du for å få løyve?",
-    options: ["organisasjon", "Hva er rett og galt.", "Foretaksregisteret"],
-    correctAnswers: [0],
-  },
-  {
-    question:
-      "Hvilke utstyr skal være i en drøsjebil? taklamp- taksmeter- løyve synlig-kjøresddel",
-    options: [
-      "du kan ikke gi oppsigelse på grunn av sykdum.",
-      "en peregnert fjoråret, bruttolønn, 10.2prosent",
-      "synlig.",
+      "Over 40 000 innbyggere og befolkningstetthet over 60 innbyggere per km²",
+      "Under 30 000 innbyggere og befolkningstetthet på under 70 innbyggere per km²",
+      "Under 20 000 innbyggere og befolkningstetthet på under 80 innbyggere per km²",
+      "Over 50 000 innbyggere og befolkningstetthet over 50 innbyggere per km²",
     ],
     correctAnswers: [2],
   },
   {
     question:
-      "pliktmessig avholde, når skal du være under alkohol eller andre middel?",
-    options: [
-      "3-selv finanisering( overskudd tilfirma)",
-      "før 8 timer",
-      "fremtidlig samlene utgifter.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "hvor registrere mann dresjebil?",
-    options: [
-      "staten vegvesen",
-      "kan krave tvangsording kort tid etter forfall.",
-      "Den tiden er lønsomt før du skifter den ut.",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question: "hvilken forsikring er lovpålagt et kjøretøy?",
-    options: [
-      "politiatest-faglig kompetanse 2år- minste 20 år gammel- førerkort- lege test",
-      "ansværlig forsikring.",
-      "fremtidlig samlene utgifter.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Hva er arbeidsgiveravgift?",
-    options: [
-      "bedrift betale avgift basert på lønn til ansett.( oslo 14,1%)",
-      "arbeidtaker",
-      "det er arbeidsgiver styrer ferie.",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question: "Hva er leasing?",
-    options: [
-      "ansatt ferie og hvor mange dager?",
-      "Bedrageri",
-      "du låner bil en begrense periode.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "Hvilke direkte skatter har vi?",
-    options: [
-      "Yrkesskadeerstatning. yrkesskade forsikring.",
-      "inntektskatt- trygdeavgift- formueskatt- eiendomskatt- arbeidegiveravgjfter.",
-      "takberegning.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Hva er etterskuddskatt?",
-    options: [
-      "endelig skatt- enten må du betale eller får du penger tilbake, Skatt mann betaler etter å ha fått skatmelding.",
-      "før 8 timer",
-      "Den tiden er lønsomt før du skifter den ut.",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question: "Hva er forskuddskatt?",
-    options: [
-      "Skatten du betaler på forhånd",
-      "18000kr",
-      "kan krave tvangsording kort tid etter forfall.",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question: "Hva er med i en arbeidavtale i en fast stilling?",
-    options: [
-      "Den tiden er lønsomt før du skifter den ut.",
-      "det er arbeidsgiver styrer ferie.",
-      "ikke slutte dato",
-    ],
+      "Hva blir gjennomsnittlig årlig avskrivninger dersom en investering på kr. 400 000 avskrives over 8 år?",
+    options: ["Kr. 0", "Kr. 40 000", "Kr. 50 000", "Kr. 80 000"],
     correctAnswers: [2],
   },
   {
     question:
-      "Du ha en fire setter bil. Du skal plukke opp fem barn som skal til skolen, hva skal du gjøre?",
+      "Den eller de som ønsker å etablere et aksjeselskap, må stille til rådighet en aksjekapital på ...",
+    options: ["Kr 30 000", "Kr 50 000", "Kr 100 000", "Kr 200 000"],
+    correctAnswers: [0],
+  },
+  {
+    question:
+      "Hvor stor sum er eieren av et enkeltmannsforetak økonomisk ansvarlig for?",
+    options: ["Kr 50 000", "Kr 250 000", "Kr 1 000 000", "Ubegrenset beløp"],
+    correctAnswers: [3],
+  },
+  {
+    question:
+      "Hva stor sum er den enkelte aksjonær økonomisk ansvarlig for i et aksjeselskap?",
+    options: ["Aksjeinnskuddet", "Kr 100 000", "Kr 600 000", "Ubegrenset"],
+    correctAnswers: [0],
+  },
+  {
+    question:
+      "Når er det etter bestemmelsene om pliktmessig avhold forbudt å nyte alkohol?",
     options: [
-      "25 virkedager eller 5 uke",
-      "send inn en annen bil med nok plasser.",
-      "ikke slutte dato",
+      "8 timer før tjenestetiden begynner",
+      "11 timer før tjenestetiden begynner",
+      "8 timer etter at tjenestetiden er over",
+      "11 timer etter at tjenestetiden er over",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question: "Oppgaven gjelder pliktmessig avhold.",
+    options: [
+      "Fører må ikke nyte alkohol eller ta annet berusende i tjenestetiden og i et tidsrom av...",
+      "8 timer før tjenestetiden begynner",
+      "8 timer etter tjenestetiden avsluttes",
+      "10 timer før tjenestetiden begynner",
     ],
     correctAnswers: [1],
   },
   {
-    question: "Hva er DA?",
+    question: "Hva er et ansvarlig selskap (ANS)?",
     options: [
-      "Setter sammen-inntakter og kostnad i overskudd eller underskudd.",
-      "Bedrageri",
-      "deltakra har sin egen ansvarsandel. Da står for delt ansver alle eier har sin egen ansverdel",
+      "Et offentlig foretak som skal drives til selvkost",
+      "Et selskap som eies av to eller flere personer som har et ubegrenset personlig ansvar for virksomheten",
+      "Et aksjeselskap med flere enn en eier som er solidarisk ansvarlig for inntektene",
+      "Et selskap med en eier som er personlig ansvarlig for selskapets gjeld",
     ],
-    correctAnswers: [2],
+    correctAnswers: [1],
   },
   {
-    question:
-      "sjøfår dine stopper taksmeter midt i en tur , hva skal du fortalle han?",
-    options: ["Bedrageri", "minste 30 minutter.", "foretakregister"],
-    correctAnswers: [0],
-  },
-  {
-    question: "Hva er investering?",
+    question: "Hva betyr det at et selskap er insolvent?",
     options: [
-      "legge inn penger i noe i hope om et du tjenet på det. legge penger i investeringsfond, børs.",
-      "det du har sett inn er det du taper ved konkurs.",
-      "minste 30 minutter.",
+      "Selskapet kan ikke innfri krav ved forfall og har mer gjeld enn verdier",
+      "Selskapet har god likviditet og kan betale sin gjeld",
+      "Selskapet har ikke tilstrekkelige driftsinntekter eller kassekreditt",
     ],
     correctAnswers: [0],
   },
   {
     question:
-      "Hva skjer med den kapitale totalkostnaden dersom du kjøremindre i næring?",
+      "Den største kostnaden ved å ha kjøretøy registrert som drosje er ...",
     options: [
-      "Alt av dine inntakter og utgjefter skal skrive i regnskapet.",
-      "GNSS,60 dager.",
-      "de sinker dersom du kjøre mindre.",
+      "Renter og avdrag på finansieringen",
+      "Ansvar- og kaskoforsikringen",
+      "Drivstoffkostnaden",
+      "Kjøretøyets verditap",
     ],
     correctAnswers: [2],
   },
   {
-    question: "Hvor mange feriedager er det i løpet av år?",
+    question: "Hva er en egenmelding?",
     options: [
-      "25 virkedager eller 5 uke",
-      "arbeidsmiljølover",
-      "legge inn penger i noe i hope om et du tjenet på det. legge penger i investeringsfond, børs.",
+      "En melding som den ansatte må fylle ut ved søknad om fri uten lønn",
+      "En melding fra lege ved sykefravær over lang tid",
+      "En melding som den ansatte må fylle ut ved søknad om fri med lønn",
+      "En melding som den ansatte må overlevere til arbeidsgiver ved korttidssykdom",
     ],
-    correctAnswers: [0],
+    correctAnswers: [3],
   },
   {
-    question: "Hvem har krev på feriepenger?",
+    question:
+      "Hvilke krav må du blant annet oppfylle for å få kjøreseddel for drosje?",
     options: [
-      "Ansatt,arbeidtaker",
-      "det skal være personlig eller sendes brev, epost.",
-      "30000kr",
+      "Ha enerett i et større byområde, og gyldig kjøreseddel",
+      "Ha god vandel, tilfredsstillende økonomisk evne og drive fast og varig virksomhet i Norge",
+      "Ha økonomisk utdanning fra høyskole / eller universitet, i tillegg til fagbrev som sjåfør",
+      "Ha gyldig førerkort i alle klasser, og utdanning innen service og samferdsel",
     ],
-    correctAnswers: [0],
+    correctAnswers: [1],
   },
   {
-    question: "Hvem har ansvaret for taksmeter under kjøring?",
+    question: "Kassekreditt er en låneform. Hva er riktig?",
     options: [
-      "Setter sammen-inntakter og kostnad i overskudd eller underskudd.",
-      "fører av bilen",
-      "ansatt ferie og hvor mange dager?",
+      "Penger til å betale skatter, avgifter og pensjonsinnskudd for de ansatte",
+      "Kreditt for finansiering av kostbare langsiktige investeringer",
+      "Bedriften har et bevilget beløp innenfor en låneramme til finansiering av driften",
+      "Bedriften får en spareavtale med høyere sparerente enn utlånsrente",
+    ],
+    correctAnswers: [2],
+  },
+  {
+    question: "Hva er riktig om enerett for drosjetransport?",
+    options: [
+      "Enerett skal tildeles i alle kommuner, uavhengig av botall og innbyggere",
+      "Enerett kan tildeles etter konkurranse og gjelde for inntil 5 år",
+      "Enerett gir drosjeløyvehavere fortrinnsrett og gjelder for hele landet",
+      "Enerett gir passasjerene en eksklusiv rett til lavere transportkostnad",
     ],
     correctAnswers: [1],
   },
   {
     question:
-      "Ved hvilken tilfeller skal du gå for å ta kontroll på taksamete?",
+      "Hva er riktig om arbeidsgivers rett til å si opp arbeidstakeren som vært sykmeldt i seks måneder?",
     options: [
-      "ved stor forskjell i dekk, dimenstasjon må du kontrollen taksemeter",
-      "inntektskatt- trygdeavgift- formueskatt- eiendomskatt- arbeidegiveravgjfter.",
-      "hvis dere har sykepengerforsikring får du først sykedag,hvis ikke så får du etter 16 dager.",
+      "Arbeidstakere kan sies opp dersom fraværet er på grunn av ulykke eller sykdom",
+      "Arbeidstakeren er pliktig å levere oppsigelse ved alvorlig sykdom",
+      "Arbeidstakeren kan sies opp i perioden arbeidsgiveren betaler sykepenger (de første 16 dagene)",
+      "Arbeidstakere som er borte fra arbeidet på grunn av ulykke eller sykdom kan ikke sies opp av denne grunn",
     ],
-    correctAnswers: [0],
+    correctAnswers: [3],
   },
   {
-    question: "Hvor ofte skal bilen tilstand sjekks?",
+    question: "Hva består et merverdiavgiftsoppgjør av?",
     options: [
-      "en gang i år.",
-      "ved stor forskjell i dekk, dimenstasjon må du kontrollen taksemeter",
-      "ansatt ferie og hvor mange dager?",
+      "Utgående merverdiavgift pluss inngående merverdiavgift",
+      "Inngående merverdiavgift pluss utgående merverdiavgift",
+      "Inngående merverdiavgift minus utgående merverdiavgift",
+      "Utgående merverdiavgift minus inngående merverdiavgift",
     ],
-    correctAnswers: [0],
+    correctAnswers: [3],
   },
   {
-    question: "Hva er etikk og moral?",
+    question:
+      "En drosjesjåfør har kjørt inn kr 318 000 inklusive merverdiavgift i løpet av en termin.",
     options: [
-      "Foretaksregisteret",
-      "regner ut i fra tidligere bruttotall.",
-      "Hva er rett og galt.",
+      "Hva blir den utgående merverdiavgiften når satsen er på 6 % på transporttjenesten?",
+      "Kr 18 000",
+      "Kr 63 600",
+      "Kr 79 500",
+      "Kr 19 080",
+    ],
+    correctAnswers: [1],
+  },
+  {
+    question: "Hva beregnes årets feriepenger av?",
+    options: [
+      "Skattemessige fordel fri bil og telefon i tillegg til fjorårets netto lønn",
+      "Gjennomsnittet av netto utbetalt lønn fra foregående inntektsår",
+      "Prosentandel av fjorårets utbetalte brutto lønn",
+      "Promille av utbetalt brutto bonuser og ferielønn fra året før utbetalingsåret",
     ],
     correctAnswers: [2],
   },
   {
-    question: "Hvor ofte skal du sjekke om at HMS reglene følges?",
+    question:
+      "Når er arbeidsgiver forpliktet til å utbetale sykepenger ved de ansattes sykefravær?",
     options: [
-      "kontinuerlig (jevnlig)",
-      "50 000 kr hver år, 20 %.",
-      "Setter sammen-inntakter og kostnad i overskudd eller underskudd.",
+      "Fra første sykedag",
+      "Etter to karensdager",
+      "Etter 16 dagers sykdom",
+      "Arbeidsgiver har ingen forpliktelse til å utbetale sykepenger ved ansattes sykefravær",
     ],
     correctAnswers: [0],
+  },
+  {
+    question:
+      "Hvor lenge må en næringsdrivende ta vare på bilag og dokumentasjon (regnskapsmateriale) dersom bilagene er på papir?",
+    options: [
+      "Regnskapsmateriale og bilagsdokumentasjon skal oppbevares i Norge i fem år etter regnskapsårets slutt",
+      "Regnskapsmateriale skal oppbevares i Norge i ett år etter regnskapsårets slutt og skattemeldingen er innsendt og skatteoppgjøret er foretatt",
+      "Regnskapsmateriale anbefales oppbevart i tre år dersom det foreligger ubetalte regninger",
+      "Regnskapsmateriale skal oppbevares i Norge i ti år etter regnskapsårets slutt",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question: "Hvor ofte skal HMS-arbeidet utføres?",
+    options: [
+      "Hvert ett år",
+      "Hvert halvår",
+      "Kontinuerlig",
+      "En gang i måneden",
+    ],
+    correctAnswers: [2],
+  },
+  {
+    question:
+      "Hva er riktig dersom en drosjeeier ikke betaler skyldig merverdiavgift?",
+    options: [
+      "Drosjeeierens løyve blir inndratt umiddelbart",
+      "Myndighetene sender en påminnelse om utestående merverdiavgift tidligst 30 dager etter forfall",
+      "Drosjeeieren må overføre merverdiavgiften til neste merverdiavgiftsoppgjør",
+      "Myndighetene sender ut varsel om tvangsinnfordring som blir gjennomført kort tid etter forfall",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question:
+      "Hva er en av hovedhensiktene med kjøre- og hviletidsbestemmelsene?",
+    options: [
+      "Sørge for at transporten kommer raskere fram",
+      "Gunstige konkurransevilkår som gir lavere transportkostnad",
+      "Forbedre trafikksikkerheten for alle trafikanter",
+      "Fordele transportoppdrag til land med mindre restriktivt lovverk",
+    ],
+    correctAnswers: [2],
+  },
+  {
+    question:
+      "På hvilket tidspunkt er det økonomisk riktig å vurdere bytte til ny drosje?",
+    options: [
+      "Når den gamle bilens renter og avskrivninger øker mer enn den nye bilens gjennomsnittlige variable kostnader",
+      "Når det presenteres en ny modell som har bedre drivstofføkonomi",
+      "Når de variable inntektene blir mindre ved å kjøpe en ny bil",
+      "Når de totale kostnadene det neste året forventes å bli lavere på ny bil enn for den gamle",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva er riktig om godtgjøring (lønn) for utført arbeid?",
+    options: [
+      "Arbeidsgiver kan velge mellom å utbetale laveste beløp beregnet av minstelønn etter avtalt lønn",
+      "Arbeidsgiver skal beregne skattetrekk av lønn og annet vederlag for utført arbeid i bedriften",
+      "Det er opp til arbeidstaker om mottatt lønn skal innberettes til myndighetene for beregning av skatt",
+      "Det er frivillig om den ansatte ønsker at arbeidsgiver skal foreta skattetrekk ved utbetaling av lønn",
+    ],
+    correctAnswers: [1],
+  },
+  {
+    question: "Hva er riktig dersom et aksjeselskap går konkurs?",
+    options: [
+      "Underskriverne på tinglysningsdokumentene er ansvarlige for å varsle myndighetene om konkursen",
+      "Aksjeeierne er ansvarlige for gjeld kun hvis de er ansatt i selskapet",
+      "Aksjeeierne er solidarisk ansvarlige for bedriftens totale tap",
+      "Aksjeeierne taper kun sin innskutte egenkapital",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva er arbeidsgivers trygdeforpliktelser?",
+    options: [
+      "Utbetaler tilleggspensjon",
+      "Spare opp midler til uføretrygd",
+      "Dekke privat helseforsikring",
+      "Betale inn arbeidsgiveravgift",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva er riktig om planlegging av arbeidstid og pauser?",
+    options: [
+      "Planlegges enhetlig for hele døgnet",
+      "Dersom den daglige arbeidstiden vil overstige 10 timer, må arbeidstaker ha to pauser",
+      "Dersom det arbeides sammenhengende mindre enn 8 timer, kan arbeidstaker fraskrive seg pause",
+      "Dersom den daglige arbeidstiden vil overstige fem og en halv time, skal arbeidstaker ha minst en pause.",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Indirekte skatt...",
+    options: [
+      "Inndrives basert på hvilken trygdeavgift",
+      "Innkreves ved kjøp av varer og tjenester",
+      "Inndrives basert på lønnsinntekter",
+      "Innkreves skatteyters formue",
+    ],
+    correctAnswers: [1],
+  },
+  {
+    question:
+      "Hvilken forskrift skal oppbevares i drosjebilen og forvises på oppfordring fra passasjerene?",
+    options: [
+      "Forskrift om krav til taksameter",
+      "Forskrift om grunnutdanning og etterutdanning for yrkessjåfører (yrkessjåførforskriften)",
+      "Forskrift om takstberegning og maksimalpriser for løyvepliktig drosjetransport med motorvogn",
+      "Forskrift om bruk av kjøretøy",
+    ],
+    correctAnswers: [2],
+  },
+  {
+    question: "Hva er etterskuddsskatt?",
+    options: [
+      "Det er beløpet i skatteoppgjøret når Skatteetaten har beregnet riktig personskatt",
+      "Det er det samme som restskatt",
+      "Det er skatt beregnet av skattbart resultatet i et aksjeselskap",
+      "Det er skatt beregnet av antatt netto skattbar inntekt inneværende år",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva er riktig om utgående merverdiavgift?",
+    options: [
+      "Utgående merverdiavgift er en grunnavgift for regulering av bedriftens omsetning",
+      "Utgående merverdiavgift er omsetningsavgift for kjøretøyenes drivstoffbruk",
+      "Utgående merverdiavgift beregnes av bedriftens kjøp av varer og tjenester",
+      "Utgående merverdiavgift beregnes av bedriftens omsetning",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva må du ha med når du skal utarbeide et budsjett?",
+    options: [
+      "Inntekter minus kostnader",
+      "Oversikt over fremtidige innbetalinger minus utbetalinger",
+      "Alle kalkulerte kostnader etter avsluttet anbudsoppdrag",
+      "Alle regnskapsposter som reflekterer regnskapet",
+    ],
+    correctAnswers: [1],
+  },
+  {
+    question: "Hva må arbeidsgiver gjøre dersom en arbeidstaker ... Døgnet?",
+    options: [
+      "Sørge for at drosjen til enhver tid er oppvarmet, ren og klar til bruk",
+      "Utbetale lønn og honorarer av innkjørt etter hvert skift (daglig godtgjøring)",
+      "Det skal utarbeides en arbeidsplan som viser hvilke uker, dager og tider den enkelte arbeidstaker skal arbeide",
+      "Sørge for at den ansatte har tilgang på hvilerom og mat i løpet av den tiden arbeidstakeren arbeider",
+    ],
+    correctAnswers: [2],
   },
   {
     question: "Hva er et enkeltpersonforetak?",
     options: [
-      "en eier med ubegrenset ansver.",
-      "sette inn penger , ingen personlig ansver",
-      "et bevilket beløp med en kasseramme ( maks Belop) .",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question: "Hva er et ansvarlig seleskapet?",
-    options: [
-      "2 eller flere eier med ubegrenset ansver.",
-      "arbeidesgiver og arbeidetaker lager en skriftlig plan over når den ansett skal jobbe.",
-      "før 8 timer",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question: "Hva er et aksjerselskap?",
-    options: [
-      "du kan ikke gi oppsigelse på grunn av sykdum.",
-      "sette inn penger , ingen personlig ansver",
-      "8 passasjen.Max. 9 passasjer med sjofør",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Hvor mye minimumskapital mådu ha for å starte",
-    options: [
-      "Intekter= du tjener inn",
-      "kan krave tvangsording kort tid etter forfall.",
-      "et aksjereselskapet?",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "Hvor mye økonomisk ansvarlig er du for i et aksjerselskapet?",
-    options: [
-      "det skal være personlig eller sendes brev, epost.",
-      "hvis han har truet passasjer.",
-      "aksjerinnskudd.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "Du åpner et aksjeselskap hvor skal du registrere?",
-    options: ["foretakregister", "Hva er rett og galt.", "organisasjon"],
-    correctAnswers: [0],
-  },
-  {
-    question: "Hva er ANS?",
-    options: [
-      "det er arbeidsgiver styrer ferie.",
-      "hvor deltakerne har ubegrenset ansvar.",
-      "8 passasjen.Max. 9 passasjer med sjofør",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Hvilken tilfele kan du si opp( avkjed )ti ansatt?",
-    options: [
-      "deltakra har sin egen ansvarsandel. Da står for delt ansver alle eier har sin egen ansverdel",
-      "hvis han har truet passasjer.",
-      "legge inn penger i noe i hope om et du tjenet på det. legge penger i investeringsfond, børs.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "finansering?",
-    options: [
-      "Når bilen er ikke økonomisk, kjøpe el bil.",
-      "betyr hvor får du penger fra",
-      "de sinker dersom du kjøre mindre.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Hva er riktig planleging av ferie?",
-    options: [
-      "det er arbeidsgiver styrer ferie.",
-      "8 passasjen.Max. 9 passasjer med sjofør",
-      "før 8 timer",
-    ],
-    correctAnswers: [0],
-  },
-  {
-    question: "Hvem har krev for feriepenger?",
-    options: [
-      "den må ikke overtide, 9 timer på 24 timer,",
-      "arbeidtaker",
-      "de sinker dersom du kjøre mindre.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Hvorden blir fereipenger utregnet?",
-    options: [
-      "Setter sammen-inntakter og kostnad i overskudd eller underskudd.",
-      "en peregnert fjoråret, bruttolønn, 10.2prosent",
-      "en gang i år.",
-    ],
-    correctAnswers: [1],
-  },
-  {
-    question: "Hvorden regner mann ut av forskudskatt?",
-    options: [
-      "synlig.",
-      "Etter 5 timer og 30 minutter har ansatt krav på pause.",
-      "regner ut i fra tidligere bruttotall.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "Når bør du bytte din drosje?",
-    options: [
-      "hvis han har truet passasjer.",
-      "under 20000 innbyggere- 80 km byfolkning - tildeles ved konkuranse- maks 5 år- fylkskomune tildels enerett",
-      "Når bilen er ikke økonomisk, kjøpe el bil.",
-    ],
-    correctAnswers: [2],
-  },
-  {
-    question: "Du avskriving for 400 000 på 8 år, Hvor mye er avskriving?",
-    options: [
-      "50 000 kr hver år, 20 %.",
-      "du setter det inn i skattetrekkskonto, først",
-      "Den tiden er lønsomt før du skifter den ut.",
+      "Foretak med en eier som har ubegrenset ansvar for foretakets forpliktelser",
+      "Foretak registrert som AS hvor en person er ansvarlig for alle aksjene",
+      "Foretak med en eier hvor eieren har begrenset ansvar for foretakets forpliktelser",
+      "Foretak bestående av inntil to like eiere med likt ansvar",
     ],
     correctAnswers: [0],
   },
   {
     question:
-      "En taxi kjørte på en termin 280000/12% , Hvor mye sakl du betale?",
-    options: ["Altin", "30000kr", "fradragsfører verdigfallet til en eiendel."],
+      "Hva skjer med totale kapitalkostnader når vi kjører mindre i næring?",
+    options: [
+      "De synker i forhold til antall reduserte kilometer kjørt",
+      "De forblir de samme uansett",
+      "Rentene som er en del av kapitalkostnadene synker",
+      "De øker i forhold til antall redusert kilometer",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question: "Hva er riktig om forskuddstrekk?",
+    options: [
+      "Settes inn på bedriftenes plasseringskonto",
+      "Beregnes av innkjørte inntekter med fratrekk av kostnader",
+      "Settes inn på skattetrekkskontoen senest første virkedag etter lønnsutbetaling",
+      "Beregnes av den ansattes stillingsbrøk",
+    ],
+    correctAnswers: [2],
+  },
+  {
+    question: "I hvilket tilfelle kan du si opp (avskjedige) en ansatt?",
+    options: [
+      "Dersom den ansatte har levert bilen etter endt skift uten å ha vasket den",
+      "Dersom den ansatte har kommet for sent på jobb tre ganger",
+      "Dersom den ansatte har nektet å ta opp en passasjer med synlig kniv",
+      "Dersom den ansatte har stjålet fra passasjeren",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva er riktig om bokføring?",
+    options: [
+      "Alle opplysninger om sjåførens kjøremåte og bilens drivstoffbruk føres i egen kjørebok",
+      "Bilag og dokumentasjon skal bokføres og spesifiseres korrekt og nøyaktig",
+      "Alle drosjeturer skal fortløpende bokføres og spesifiseres med distanse og kjøretid",
+      "Bilag kan bokføres en gang per år, selv om man kan levere merverdiavgiftsmelding hver annen måned",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva er arbeidsgiveravgift?",
+    options: [
+      "En avgift bedriften må betale basert på lønnen til de ansatte",
+      "En trygdeytelse som avsettes og utbetales som feriepenger til ansatt",
+      "En avgift hver ansatt må betale basert på lønnen",
+      "En fiskalavgift bedriften må betale basert på overskuddet",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question: "Hva er riktig bruk av loggførte opplysninger om drosjeturer?",
+    options: [
+      "Opplysninger fra bilens GPS skal loggføres og lagres i 40 dager",
+      "Opplysninger fra AutoPASS-brikke skal slettes etter syv virkedager",
+      "Opplysninger fra et satellittbasert kommunikasjonssystem (GNSS), skal lagres i 60 dager",
+      "Opplysninger fra MAP skal slettes senest 14 dager etter registrering",
+    ],
+    correctAnswers: [2],
+  },
+  {
+    question: "Hvilke oppsigelsesfrister gjelder ved avskjed?",
+    options: [
+      "Øyeblikkelig fratreden",
+      "Gjensidig oppsigelsestid på 1 måned",
+      "Gjensidig oppsigelsestid på 14 dager",
+      "Det er ikke lov å foreta en direkte avskjed av arbeidstaker",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question:
+      "Forsikringsselskapene tilbyr ulike typer forsikring for kjøretøy. Hvilken av disse forsikringstypene er lovpålagt?",
+    options: [
+      "Full kaskoforsikring",
+      "Del kaskoforsikring",
+      "Bilglassforsikring",
+      "Ansvarsforsikring",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva er riktig om planlegging av ferie?",
+    options: [
+      "Det er arbeidsgiver som har styringsretten over ferieavvikling",
+      "Feriefritiden bestemmes av myndighetene i forhold til når skolene har ferie",
+      "Den ansatte bestemmer selv når egen sommerferie skal avvikles",
+      "Fagforeningen har styringsretten over når feriefritiden skal avvikles",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question: "Hva beregnes årets feriepenger av?",
+    options: [
+      "Gjennomsnittet av de ansattes lønn fordeles likt mellom de ansatte",
+      "Fjorårets opptjente lønn",
+      "Fordel av fri bil og telefon i tillegg til fjorårets netto lønn",
+      "Ubetalt lønn og ferielønn fra året før utbetalingsåret",
+    ],
     correctAnswers: [1],
   },
   {
-    question: "320000/ 6% ?",
+    question:
+      "Drosjeløyve gir løyvehaver rett til å benytte motorvogn registrert for maksimalt ...",
+    options: ["5 personer", "17 personer", "12 personer", "9 personer"],
+    correctAnswers: [3],
+  },
+  {
+    question:
+      "En arbeidstaker har vært midlertidig ansatt som vikar i mer enn 3 år. Hvilke rettigheter har arbeidstakeren?",
     options: [
-      "18000kr",
-      "deltakra har sin egen ansvarsandel. Da står for delt ansver alle eier har sin egen ansverdel",
-      "en eier med ubegrenset ansver.",
+      "Vikariatet kan forlenges inntil 5 år",
+      "Arbeidstaker må anmodes om å levere oppsigelse",
+      "Vikariatet fortsetter på ubegrenset tid",
+      "Arbeidstakeren har krav på fast stilling",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva betraktes som langsiktig gjeld?",
+    options: [
+      "Manglende innbetalt skattetrekk",
+      "Skyldig arbeidsgiveravgift",
+      "Ubenyttet kassekreditt siste år",
+      "Pantelån med nedbetalingsfrist over ett år",
+      "63.⁠ ⁠Hvor mange løyvehaver rett til å benytte motorvogn registrert for en drosje?",
+      "⁠  ⁠17 personer",
+      "⁠  ⁠12 personer",
+      "⁠  ⁠5 personer",
+      "⁠  ⁠ 9 personer",
+      "64.⁠ ⁠Du skal ansette en sjåfør i en hel fast stilling. Hva skal blant annet være med i den skriftlige arbeidsavtalen?",
+      "⁠  ⁠Planlegging av pauser og hvor disse skal tas",
+      "⁠  ⁠Tidspunktet for arbeidsforholdets begynnelse og slutt",
+      "⁠  ⁠De faglige krav som gjelder for stillingen",
+      "⁠  ⁠ Lengden av den avtalte daglige og ukentlige arbeidstid",
+      "65.⁠ ⁠Hva er riktig om kravene til «tilfredsstillende økonomisk evne» ved tildeling av drosjeløyve?",
+      "⁠  ⁠Det skal innbetales en garantisum til løyvemyndigheten",
+      "⁠  ⁠Det må opplyses om to private kausjonister som garantister",
+      "⁠  ⁠ Det må fremlegges en garantierklæring fra bank eller forsikringsselskap til løyvemyndigheten",
+      "⁠  ⁠Det skal framlegges dokumentasjon på at kjøretøyet er betalt",
+      "66.⁠ ⁠Hva er riktig om skatt?",
+      "⁠  ⁠Eiendomsskatt legges for drosjer kjøpt og eid av virksomheten",
+      "⁠  ⁠Formueskatt er frivillig, og betales etter evne og vilje",
+      "⁠  ⁠ Inntektsskatt er en direkte skatt på inntekt og formue for enkeltpersoner",
+      "⁠  ⁠Personskatt skal beregnes av innbetaling til yrkesskadeforsikringen",
+    ],
+    correctAnswers: [3, 8, 14, 19, 24],
+  },
+  {
+    question: "Hva er riktig om forskuddsskatt?",
+    options: [
+      "Det er skatt som betales før den endelige skatteoppgjøret er klar",
+      "Det er forskuddsskatt som betales fortrinnsvis",
+      "Det skal betales årlig",
     ],
     correctAnswers: [0],
+  },
+  {
+    question: "Hva er riktig om enkeltmannsforetak?",
+    options: ["Ubegrenset ansvar", "Fast ansvar", "Delvis ansvar"],
+    correctAnswers: [0],
+  },
+  {
+    question: "Hva betyr insolvent bedrift?",
+    options: [
+      "Bedriften kan ikke innfri sine krav",
+      "Bedrift med mye gjeld",
+      "Bedrift med lite gjeld",
+      "Bedrift med anmerkninger",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question: "Du får en tur med fem barn. Hva er riktig?",
+    options: [
+      "Du tar 4 og slipper én",
+      "Du kan ta alle 5 med én bil",
+      "Du kan bestille nok bil for alle",
+    ],
+    correctAnswers: [2],
+  },
+  {
+    question: "Hva trenger du utenom taksameter?",
+    options: ["MAP", "GPS", "Mobiltelefon"],
+    correctAnswers: [1],
+  },
+  {
+    question: "Hva er riktig om aksjekapitalinnskudd?",
+    options: ["Kr 100 000", "Kr 60 000", "Kr 30 000", "Ubegrenset"],
+    correctAnswers: [2],
+  },
+  {
+    question:
+      "Du har en bil. Ett år senere selger du bilen som brukt. Hva er en pris i henhold til dagens kurs?",
+    options: ["75%", "70%", "60%"],
+    correctAnswers: [0],
+  },
+  {
+    question:
+      "Oppsigelse – 2 måneder til ansatt: Hvor lenge har han/hun vært på jobb?",
+    options: ["Mer enn 2 år", "Mer enn 3 år", "Mer enn 5 år", "Mer enn 10 år"],
+    correctAnswers: [2],
+  },
+  {
+    question: "Hvem dekker yrkesskade?",
+    options: [
+      "Forsikringen",
+      "Arbeidsloven",
+      "Myndighetene",
+      "Arbeidsforsikringen",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hvordan regnes merverdiavgift?",
+    options: [
+      "En fiskalavgift bedriften må betale basert på overskuddet",
+      "En avgift bedriften må betale basert på lønnen til de ansatte",
+      "En trygdeytelse som avsettes og utbetales som feriepenger til ansatte",
+      "Merverdiavgift (MVA) regnes ved å bruke en enkel formel som tar hensyn til den inngående merverdiavgiften (MVA på kjøp) og den utgående merverdiavgiften (MVA på salg). Denne formelen er:",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hvis en drosjeeier ikke betaler skyldig merverdiavgift?",
+    options: [
+      "Løyve blir inndratt umiddelbart",
+      "Myndighetene sender en påminnelse om utestående merverdiavgift tidligst 30 dager etter forfall",
+      "Drosjeeieren må overføre merverdiavgiften til neste merverdiavgiftsoppgjør",
+      "Myndighetene sender ut varsel om tvangsinnfordring som blir gjennomført kort tid etter forfall",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Hva er planlegging av arbeidstid og pauser?",
+    options: [
+      "plantes en het Den den daglige meget.",
+      "Dersom den daglige arbeidstiden vil oversige over 5 1⁄2 time, skal arbeidstaker ha minst en pause.",
+      "Dersom den daglige arbeidstiden vil overstige tem og en het, kawheidstaker ha minst en pas.",
+      "Dersom den si in sammenhengende arbeten indre enn åñs tinter på att skilt, skal arbeidstaker abade uten paner.",
+    ],
+    correctAnswers: [1],
+  },
+  {
+    question: "HMS-arbeidet utføres?",
+    options: ["Kontinuerlig", "SESE", "En gang i måneden"],
+    correctAnswers: [0],
+  },
+  {
+    question:
+      "En arbeidstaker har vært midlertidig ansatt som vikar i mer enn 3 år. Hvilke rettigheter har arbeidstakeren?",
+    options: [
+      "Vikariatet kan forlenges inntil 5 år",
+      "Arbeidstaker må anmodes om å levere oppsigelse",
+      "Vikariatet fortsetter på ubegrenset tid",
+      "Arbeidstakeren har krav på fast stilling",
+    ],
+    correctAnswers: [3],
+  },
+  {
+    question: "Dersom du har en tur, hvordan registrerer du det?",
+    options: ["GPS", "Takstameter", "GNSS"],
+    correctAnswers: [2],
+  },
+  {
+    question: "Hva gjelder utenom taksameter i en drosje?",
+    options: ["Takskilt", "Løyvenummeret", "Registreringsnummer"],
+    correctAnswers: [0],
+  },
+  {
+    question: "Når kan arbeidstaker avbryte jobben?",
+    options: [
+      "Dersom det er farlig for liv og helse",
+      "Dersom det er lange arbeidstider",
+      "Dersom arbeidsmiljøet ikke er trygt",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question: "Hva er en OTP?",
+    options: [
+      "Det er obligatorisk tjenestepensjon",
+      "Det er trygdepensjon for ansatte",
+      "Det er lønnsgaranti for de ansatte",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question: "Hva er ansvaret for DA?",
+    options: [
+      "Enkeltforetak som eies av to personer eller flere med ubegrenset ansvar",
+      "Aksjeselskap som har 30 tusen",
+      "Aksjeinnskudd-selskap",
+    ],
+    correctAnswers: [0],
+  },
+  {
+    question: "Hvem har ansvaret hvis noen har gjenglemt bagasje på drosje?",
+    options: [
+      "Eieren av bilen",
+      "Kan beholde inntil tre måneder",
+      "Rimelig tid – skal leveres til politiet",
+    ],
+    correctAnswers: [2],
+  },
+  {
+    question: "Hvor kan du registrere aksjeselskap?",
+    options: ["Foretaksregisteret", "Skatteetaten", "Justervesenet"],
+    correctAnswers: [0],
+  },
+  {
+    question: "Hva er en leasing?",
+    options: [
+      "Korttidsleie for biler",
+      "Bedriftsfinansiering og avdragsordning",
+      "Langtids bolig­utleie",
+    ],
+    correctAnswers: [1],
+  },
+  {
+    question:
+      "Hva blir gjennomsnittlig årlig avskrivninger dersom en investering på kr. 40 000 avskrives over 8 år?",
+    options: [
+      "5 000 pr år",
+      "7 000 pr år",
+      "9 000 pr år",
+      "90 Hva er riktig om arbeidstid og fritid?",
+      "Den alminnelige arbeidstiden må ikke overstige 7,5 timer i løpe av 24 time og må ikke over 37,5 timer i løpet av 5 dager",
+      "Den alminnelige fritiden må være minst 9 timer i løpe av 24 timer, og minst 45 timer sammenhengende hvile løpet av 5 dager",
+      "Den alminnelige arbeidstiden må ikke overstige 9 timer i løpe av 24 time, og må ikke over 40 timer i løpet av 7 dager",
+      "Den alminnelige fritiden må være minst 15 timer i løpe av 24 timer, og minst 50 timer sammenhengende hvile løpet av 7",
+    ],
+    correctAnswers: [0, 7],
   },
 ];
 // ✅ Base Questions - Never Mutated
@@ -977,3 +1078,4 @@ loginBtn.addEventListener("click", () => {
     alert("Wrong password");
   }
 });
+
