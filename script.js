@@ -800,9 +800,13 @@ const BASE_QUESTIONS = [
       "5 000 pr år",
       "7 000 pr år",
       "9 000 pr år",
-      
-    
-    correctAnswers: [0],
+      "90 Hva er riktig om arbeidstid og fritid?",
+      "Den alminnelige arbeidstiden må ikke overstige 7,5 timer i løpe av 24 time og må ikke over 37,5 timer i løpet av 5 dager",
+      "Den alminnelige fritiden må være minst 9 timer i løpe av 24 timer, og minst 45 timer sammenhengende hvile løpet av 5 dager",
+      "Den alminnelige arbeidstiden må ikke overstige 9 timer i løpe av 24 time, og må ikke over 40 timer i løpet av 7 dager",
+      "Den alminnelige fritiden må være minst 15 timer i løpe av 24 timer, og minst 50 timer sammenhengende hvile løpet av 7",
+    ],
+    correctAnswers: [0, 7],
   },
   {
     question:
