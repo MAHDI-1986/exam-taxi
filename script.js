@@ -1092,7 +1092,7 @@ partSelector.addEventListener("change", () => {
 
 loginBtn.addEventListener("click", () => {
   const password = passwordInput.value.trim();
-  if (password === "123") {
+  if (password === "20261986") {
     passwordGate.style.display = "none";
     appContainer.style.display = "block";
 
